@@ -20,32 +20,32 @@ function initBoard() {
 
 function scrambleBoard() {
     for (var n = 1; n <= 143; n++) {
-		//drawBoard();
-		var i = emptyCell.i;
-		var j = emptyCell.j;
-		var possibilities = [];
-		if (i > 0) 
-			possibilities.push(new Cell(i - 1, j));
-		if (j > 0) 
-			possibilities.push(new Cell(i, j - 1));
-		if (i < edgeSize - 1) 
-			possibilities.push(new Cell(i + 1, j));
-		if (j < edgeSize - 1) 
-			possibilities.push(new Cell(i, j + 1));
-			
-		rand = Math.ceil(Math.random() * (possibilities.length)) - 1;
-		var newCell = possibilities[rand];
-		log("newCell: " + newCell.i + ", " + newCell.j);
-		board[i][j] = board[newCell.i][newCell.j];
-		board[newCell.i][newCell.j] = 0;
-		emptyCell = newCell;
+        //drawBoard();
+        var i = emptyCell.i;
+        var j = emptyCell.j;
+        var possibilities = [];
+        if (i > 0) 
+                possibilities.push(new Cell(i - 1, j));
+        if (j > 0) 
+                possibilities.push(new Cell(i, j - 1));
+        if (i < edgeSize - 1) 
+                possibilities.push(new Cell(i + 1, j));
+        if (j < edgeSize - 1) 
+                possibilities.push(new Cell(i, j + 1));
+
+        rand = Math.ceil(Math.random() * (possibilities.length)) - 1;
+        var newCell = possibilities[rand];
+        log("newCell: " + newCell.i + ", " + newCell.j);
+        board[i][j] = board[newCell.i][newCell.j];
+        board[newCell.i][newCell.j] = 0;
+        emptyCell = newCell;
     }
 }
 
 function drawBoard() {
-    var top = 0;
+    var top = 2;
     for (var i = 0; i < edgeSize; i++) {
-        var left = 0;
+        var left = 2;
         for (var j = 0; j < edgeSize; j++) {
             if (board[i][j] !== 0) {
                 var elem = document.getElementById('p' + board[i][j]);
@@ -60,8 +60,9 @@ function drawBoard() {
 }
 
 function log(message) {
-  var output = document.getElementById("messages");
-  output.value += message + "\n";
+    //var output = document.getElementById("messages");
+    //output.value += message + "\n";
+    console.log(message);
 }
 
 function move(pieceID) {
@@ -109,10 +110,10 @@ $(document).ready(function() {
     initBoard();
     scrambleBoard();
     drawBoard();
-    $('div').click(function() {
+    $('.piece').click(function() {
         var p = $(this).children()[0];
 	var id = typeof (p.innerText) === "undefined" ? p.textContent : p.innerText;
         log("Clicked on " + p + " : " + id);
-        $(this).animate(move(id),500);
+        $(this).animate(move(id),300);
     });
 });
