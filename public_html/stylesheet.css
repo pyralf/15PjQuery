@@ -47,3 +47,41 @@ p {
     border: 3px sienna solid;
     color: maroon;
 }
+
+.button {
+    display: table;
+    text-align: center;
+    position:relative; 
+    height: 90px;
+    width: 90px;
+    border-radius: 100px;
+    background-color: menu;
+    border: 3px grey solid;
+    color: green;
+    margin: 20px;
+}
+
+.button p {
+    font-size: xx-large;
+    font-weight: bold;
+}
+
+h1 {
+    text-align: center;
+    font-family: Verdana;
+}
+
+.game {
+    display: table;
+    position: relative;
+    margin: auto;
+}
+
+#start {
+    float: left;
+}
+
+#help {
+    float: right;
+}
+
