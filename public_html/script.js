@@ -4,6 +4,8 @@ function Cell(i, j) {
 }
 
 function initBoard() {
+    board = [];
+    var cellVal = 0;
     for (i = 0; i < edgeSize; i++) {
         var row = [];
         for (j = 0; j < edgeSize; j++) {
@@ -19,7 +21,7 @@ function initBoard() {
 }
 
 function scrambleBoard() {
-    for (var n = 1; n <= 143; n++) {
+    for (var n = 1; n <= 142; n++) {
         //drawBoard();
         var i = emptyCell.i;
         var j = emptyCell.j;
@@ -53,9 +55,9 @@ function drawBoard() {
                 elem.style.left = left + "px";
                 //log("Position p" + board[i][j] + " at " + top + "px, " + left + "px");
             }
-            left += 100;
+            left += pieceSize;
         }
-        top += 100;
+        top += pieceSize;
     }
 }
 
@@ -75,25 +77,25 @@ function move(pieceID) {
                     if (board[i - 1][j] === 0) {
                         board[i - 1][j] = id;
                         board[i][j] = 0;
-                        return {top:'-=100px'}; // up
+                        return {top:'-=' + pieceSize + 'px'}; // up
                     }
                 if (i + 1 < edgeSize)
                     if (board[i + 1][j] === 0) {
                         board[i + 1][j] = id;
                         board[i][j] = 0;
-                        return {top:'+=100px'}; // down
+                        return {top:'+=' + pieceSize + 'px'}; // down
                     }
                 if (j > 0)
                     if (board[i][j - 1] === 0) {
                         board[i][j - 1] = id;
                         board[i][j] = 0;
-                        return {left:'-=100px'}; // left
+                        return {left:'-=' + pieceSize + 'px'}; // left
                     }
                 if (j + 1 < edgeSize)
                     if (board[i][j + 1] === 0) {
                         board[i][j + 1] = id;
                         board[i][j] = 0;
-                        return {left:'+=100px'}; // right
+                        return {left:'+=' + pieceSize + 'px'}; // right
                     }
                 log("Can't move!");
             }
@@ -101,19 +103,24 @@ function move(pieceID) {
     } 
 }
 
-var edgeSize = 4;
+var pieceSize = 90; // in px
+var edgeSize = 4; // edge size of board in pieces
 var board = [];
-var cellVal = 0;
-var emptyCell = new Cell(0, 0);
+var emptyCell;
 
 $(document).ready(function() {
     initBoard();
-    scrambleBoard();
     drawBoard();
     $('.piece').click(function() {
         var p = $(this).children()[0];
 	var id = typeof (p.innerText) === "undefined" ? p.textContent : p.innerText;
         log("Clicked on " + p + " : " + id);
         $(this).animate(move(id),300);
+    });
+    $('#start').click(function() {
+        log("clicked on start");
+        initBoard();
+        scrambleBoard();
+        drawBoard();
     });
 });

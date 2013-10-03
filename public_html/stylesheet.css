@@ -14,8 +14,8 @@ p {
     border: 3px black solid;
     background-color: darkslategray;
     position:relative;
-    width: 440px;
-    height: 440px;
+    width: 400px;
+    height: 400px;
     margin:auto;
 }
 
@@ -23,8 +23,8 @@ p {
     border-radius: 10px;
     background-color: seashell;
     position:relative;
-    width: 401px;
-    height: 401px;
+    width: 360px;
+    height: 360px;
     margin: auto;
     margin-top: 20px;
 }
@@ -33,22 +33,42 @@ p {
     display: table;
     text-align: center;
     position:absolute; 
-    height: 90px;
-    width: 90px;
+    height: 82px;
+    width: 82px;
     border-radius: 10px;
     border: 3px dodgerblue solid;
     background-color: skyblue;
     color: navy;
 }
 
-.piece:nth-child(odd)
-{
+#p1,#p3,#p6,#p8,#p9,#p11,#p14 {
     background-color: gold;
     border: 3px sienna solid;
     color: maroon;
 }
 
 .button {
+    display: table;
+    text-align: center;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    position: relative; 
+    width: 90px;
+    height: 90px;
+    border: 3px black solid;
+    border-radius: 90px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    margin: 20px;
+    cursor: pointer;
+}
+.button:hover {
+	text-decoration: none;
+}
+.button:active {
+	position: relative;
+	top: 1px;
+}
+
+/*.button {
     display: table;
     text-align: center;
     position:relative; 
@@ -59,14 +79,28 @@ p {
     border: 3px grey solid;
     color: green;
     margin: 20px;
-}
+}*/
 
 .button p {
     font-size: xx-large;
     font-weight: bold;
 }
 
-h1 {
+.orange {
+	color: #fef4e9;
+	background: #f78d1d;
+}
+.orange:hover {
+	background: #f47c20;
+}
+.orange:active {
+	color: #fcd3a5;
+	background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
+	background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
+}
+
+h2 {
     text-align: center;
     font-family: Verdana;
 }
