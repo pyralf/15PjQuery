@@ -1,8 +1,10 @@
 p {
     display: table-cell;
     vertical-align: middle;
-    font-family: Verdana;
-    font-size: large;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: x-large;
+    font-weight: bold;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
 }
 
 #msg_area {
@@ -11,8 +13,8 @@ p {
 
 .board-outer {
     border-radius: 10px;
-    border: 3px black solid;
     background-color: darkslategray;
+    border: 3px black solid;
     position:relative;
     width: 400px;
     height: 400px;
@@ -47,6 +49,12 @@ p {
     color: maroon;
 }
 
+#p2,#p4,#p5,#p7,#p10,#p12,#p13,#p15 {
+    border: 3px dodgerblue solid;
+    background-color: skyblue;
+    color: navy;
+}
+
 .button {
     display: table;
     text-align: center;
@@ -54,55 +62,47 @@ p {
     position: relative; 
     width: 90px;
     height: 90px;
-    border: 3px black solid;
+    border: 3px darkorange solid;
     border-radius: 90px;
-    box-shadow: 0 1px 2px rgba(0,0,0,.2);
+    box-shadow: 0 1px 2px rgba(0,0,0, 0.2);
     margin: 20px;
     cursor: pointer;
 }
+
 .button:hover {
-	text-decoration: none;
-}
-.button:active {
-	position: relative;
-	top: 1px;
+    text-decoration: none;
+    background-color: none;
 }
 
-/*.button {
-    display: table;
-    text-align: center;
-    position:relative; 
-    height: 90px;
-    width: 90px;
-    border-radius: 100px;
-    background-color: menu;
-    border: 3px grey solid;
-    color: green;
-    margin: 20px;
-}*/
+.button:active {
+    position: relative;
+    top: 2px; 
+    /* inverted gradient */    
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(bottom, rgba(255,255,255,0.67) 0%,rgba(255,255,255,0) 67%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+}
 
 .button p {
     font-size: xx-large;
     font-weight: bold;
 }
 
-.orange {
-	color: #fef4e9;
-	background: #f78d1d;
-}
-.orange:hover {
-	background: #f47c20;
-}
-.orange:active {
-	color: #fcd3a5;
-	background: -webkit-gradient(linear, left top, left bottom, from(#f47a20), to(#faa51a));
-	background: -moz-linear-gradient(top,  #f47a20,  #faa51a);
-	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#f47a20', endColorstr='#faa51a');
-}
+.gradient {
+    background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0))); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top, rgba(255,255,255,0.67) 0%,rgba(255,255,255,0) 67%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(255,255,255,0) 100%); /* IE10+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 ); /* IE6-9 */
+ }   
 
-h2 {
+h1 {
     text-align: center;
-    font-family: Verdana;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .game {
@@ -113,9 +113,14 @@ h2 {
 
 #start {
     float: left;
+    background-color: orange;
 }
 
 #help {
     float: right;
+    background-color: orange;
 }
 
+#start:hover, #help:hover {
+    background-color: darkorange;
+}
