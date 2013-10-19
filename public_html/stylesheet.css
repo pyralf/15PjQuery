@@ -7,10 +7,6 @@ p {
     text-shadow: 0 1px 1px rgba(0,0,0,.3);
 }
 
-#msg_area {
-     top:450px; left:0px;
-}
-
 .board-outer {
     border-radius: 10px;
     background-color: darkslategray;
@@ -25,8 +21,8 @@ p {
     border-radius: 10px;
     background-color: seashell;
     position:relative;
-    width: 360px;
-    height: 360px;
+    width: 362px;
+    height: 362px;
     margin: auto;
     margin-top: 20px;
 }
@@ -59,19 +55,13 @@ p {
     display: table;
     text-align: center;
     text-shadow: 0 1px 1px rgba(0,0,0,.3);
-    position: relative; 
-    width: 90px;
-    height: 90px;
-    border: 3px darkorange solid;
-    border-radius: 90px;
+    width: 60px;
+    height: 60px;
+    border: 3px darkgray solid;
+    border-radius: 60px;
     box-shadow: 0 1px 2px rgba(0,0,0, 0.2);
-    margin: 20px;
+    margin: 10px;
     cursor: pointer;
-}
-
-.button:hover {
-    text-decoration: none;
-    background-color: none;
 }
 
 .button:active {
@@ -111,16 +101,23 @@ h1 {
     margin: auto;
 }
 
-#start {
-    float: left;
-    background-color: orange;
-}
-
-#help {
-    float: right;
-    background-color: orange;
+#start, #help {
+    background-color: gray;
 }
 
 #start:hover, #help:hover {
-    background-color: darkorange;
+    background-color: lightslategray;
+}
+
+#output {
+    font-size: medium;
+    font-weight: normal; 
+}
+
+.control {
+    border: 3px black solid;
+    position:relative;
+    width: 400px;
+    height: 150px;
+    margin:auto;
 }

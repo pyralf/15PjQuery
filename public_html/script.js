@@ -20,6 +20,23 @@ function initBoard() {
     }
 }
 
+function isPuzzleSolved() {
+    var cellVal = 0;
+    for (i = 0; i < edgeSize; i++) {
+        for (j = 0; j < edgeSize; j++) {
+            if (i === edgeSize - 1 && j === edgeSize - 1) {
+                if (board[i][j] !== 0)
+                    return false;
+            } else if (board[i][j] !== ++cellVal) {
+                log("board[i][j] = " + board[i][j] + " cellVal = " + cellVal);
+                return false;
+            }
+        }
+    }
+    log("SOLVED");
+    return true;
+}
+
 function scrambleBoard() {
     for (var n = 1; n <= 142; n++) {
         //drawBoard();
@@ -98,6 +115,7 @@ function move(pieceID) {
                         return {left:'+=' + pieceSize + 'px'}; // right
                     }
                 log("Can't move!");
+                return null;
             }
         }
     } 
@@ -115,7 +133,13 @@ $(document).ready(function() {
         var p = $(this).children()[0];
 	var id = typeof (p.innerText) === "undefined" ? p.textContent : p.innerText;
         log("Clicked on " + p + " : " + id);
-        $(this).animate(move(id),300);
+        var newPos = move(id);
+        if (newPos !== null) {
+            $(this).animate(newPos,300);
+            if (isPuzzleSolved()) {
+                $("#output")[0].innerHTML = "Solved";
+            }
+        }
     });
     $('#start').click(function() {
         log("clicked on start");
