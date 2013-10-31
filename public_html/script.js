@@ -20,25 +20,8 @@ function initBoard() {
     }
 }
 
-function isPuzzleSolved() {
-    var cellVal = 0;
-    for (i = 0; i < edgeSize; i++) {
-        for (j = 0; j < edgeSize; j++) {
-            if (i === edgeSize - 1 && j === edgeSize - 1) {
-                if (board[i][j] !== 0)
-                    return false;
-            } else if (board[i][j] !== ++cellVal) {
-                log("board[i][j] = " + board[i][j] + " cellVal = " + cellVal);
-                return false;
-            }
-        }
-    }
-    log("SOLVED");
-    return true;
-}
-
 function scrambleBoard() {
-    for (var n = 1; n <= 142; n++) {
+    for (var n = 1; n <= scrambleCount; n++) {
         //drawBoard();
         var i = emptyCell.i;
         var j = emptyCell.j;
@@ -121,10 +104,28 @@ function move(pieceID) {
     } 
 }
 
+function isPuzzleSolved() {
+    var cellVal = 0;
+    for (i = 0; i < edgeSize; i++) {
+        for (j = 0; j < edgeSize; j++) {
+            if (i === edgeSize - 1 && j === edgeSize - 1) {
+                if (board[i][j] !== 0)
+                    return false;
+            } else if (board[i][j] !== ++cellVal) {
+                log("board[i][j] = " + board[i][j] + " cellVal = " + cellVal);
+                return false;
+            }
+        }
+    }
+    log("SOLVED");
+    return true;
+}
+
 var pieceSize = 90; // in px
 var edgeSize = 4; // edge size of board in pieces
 var board = [];
 var emptyCell;
+var scrambleCount = 142;
 
 $(document).ready(function() {
     initBoard();
@@ -137,7 +138,8 @@ $(document).ready(function() {
         if (newPos !== null) {
             $(this).animate(newPos,300);
             if (isPuzzleSolved()) {
-                $("#output")[0].innerHTML = "Solved";
+                $("#output")[0].innerHTML = 
+                        "<strong>Solved!</strong></br>Click left button to start again.";
             }
         }
     });
@@ -146,5 +148,7 @@ $(document).ready(function() {
         initBoard();
         scrambleBoard();
         drawBoard();
+        $("#output")[0].innerHTML = 
+            "Bring the puzzle back to order by clicking a piece next to the empty cell.";
     });
 });
