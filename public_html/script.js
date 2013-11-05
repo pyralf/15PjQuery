@@ -144,11 +144,13 @@ $(document).ready(function() {
         }
     });
     $('#start').click(function() {
-        log("clicked on start");
         initBoard();
         scrambleBoard();
         drawBoard();
         $("#output")[0].innerHTML = 
             "Bring the puzzle back to order by clicking a piece next to the empty cell.";
+    });
+    $('#help').click(function() {
+        window.open("http://en.wikipedia.org/wiki/15_puzzle");
     });
 });
